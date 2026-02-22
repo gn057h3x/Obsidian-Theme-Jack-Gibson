@@ -21,7 +21,6 @@ Obsidian theme I use to track Hack The Box (HTB) labs. It contains some demo lab
 ```
 HTB/Labs/          - Machine walkthroughs (5 retired demos)
 Playbook/          - Techniques and knowledge base
-Reports/Templates/ - Finding and report templates
 Dashboard.md       - Main dashboard view
 ```
 
