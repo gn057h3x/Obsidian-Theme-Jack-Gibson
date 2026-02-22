@@ -1,0 +1,781 @@
+/*
+ * Jack Gibson — Obsidian Theme
+ * Dark terminal aesthetic with cyan headings, red accents,
+ * yellow highlights, scanline overlay, and glow effects.
+ */
+
+/* ============================================================
+   ROOT VARIABLES
+   ============================================================ */
+.theme-dark {
+  /* Core palette */
+  --jack-bg: #191919;
+  --jack-bg-secondary: #1e1e1e;
+  --jack-bg-tertiary: #252525;
+  --jack-bg-hover: #2a2a2a;
+  --jack-bg-active: #333333;
+  --jack-text: #e0e0e0;
+  --jack-text-muted: #888888;
+  --jack-text-faint: #555555;
+  --jack-cyan: #00f0ff;
+  --jack-cyan-dim: #00a8b3;
+  --jack-red: #ff003c;
+  --jack-red-dim: #cc0030;
+  --jack-yellow: #ffff00;
+  --jack-yellow-dim: #cccc00;
+  --jack-green: #2DBE28;
+  --jack-green-dim: #1a8a17;
+  --jack-orange: #f97316;
+  --jack-purple: #a855f7;
+  --jack-pink: #ec4899;
+  --jack-blue: #3b82f6;
+
+  /* Obsidian variable overrides */
+  --background-primary: var(--jack-bg);
+  --background-primary-alt: var(--jack-bg-secondary);
+  --background-secondary: var(--jack-bg-secondary);
+  --background-secondary-alt: var(--jack-bg-tertiary);
+  --background-modifier-border: #333333;
+  --background-modifier-border-hover: #444444;
+  --background-modifier-border-focus: var(--jack-cyan);
+  --background-modifier-form-field: var(--jack-bg-tertiary);
+  --background-modifier-hover: var(--jack-bg-hover);
+  --background-modifier-active-hover: var(--jack-bg-active);
+
+  --text-normal: var(--jack-text);
+  --text-muted: var(--jack-text-muted);
+  --text-faint: var(--jack-text-faint);
+  --text-accent: var(--jack-red);
+  --text-accent-hover: #ff1a50;
+  --text-on-accent: #ffffff;
+  --text-selection: rgba(0, 240, 255, 0.15);
+  --text-highlight-bg: rgba(255, 255, 0, 0.15);
+
+  --interactive-normal: var(--jack-bg-tertiary);
+  --interactive-hover: var(--jack-bg-hover);
+  --interactive-accent: var(--jack-red);
+  --interactive-accent-hover: #ff1a50;
+
+  --link-color: var(--jack-red);
+  --link-color-hover: #ff1a50;
+  --link-external-color: var(--jack-red);
+  --link-unresolved-color: var(--jack-red-dim);
+
+  --tag-color: var(--jack-cyan);
+  --tag-background: rgba(0, 240, 255, 0.08);
+  --tag-color-hover: var(--jack-cyan);
+  --tag-background-hover: rgba(0, 240, 255, 0.15);
+
+  --nav-item-color: var(--jack-text);
+  --nav-item-color-hover: var(--jack-cyan);
+  --nav-item-color-active: var(--jack-cyan);
+
+  --titlebar-background: #111111;
+  --titlebar-background-focused: #111111;
+
+  --tab-text-color: var(--jack-text-muted);
+  --tab-text-color-focused: var(--jack-cyan);
+  --tab-text-color-focused-active: var(--jack-cyan);
+  --tab-text-color-focused-active-current: #ffffff;
+
+  --graph-line: #33333380;
+  --graph-node: var(--jack-cyan);
+  --graph-node-focused: var(--jack-yellow);
+  --graph-node-tag: var(--jack-red);
+  --graph-node-attachment: var(--jack-green);
+  --graph-node-unresolved: var(--jack-text-faint);
+
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: rgba(0, 240, 255, 0.15);
+  --scrollbar-active-thumb-bg: rgba(0, 240, 255, 0.3);
+
+  --color-accent: var(--jack-red);
+  --color-accent-1: var(--jack-cyan);
+  --color-accent-2: var(--jack-yellow);
+
+  /* Checkboxes */
+  --checkbox-color: var(--jack-green);
+  --checkbox-color-hover: var(--jack-green);
+  --checkbox-border-color: var(--jack-text-faint);
+}
+
+
+/* ============================================================
+   TYPOGRAPHY — Monospace everything
+   ============================================================ */
+.theme-dark {
+  --font-default: 'Commit Mono', 'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Consolas', 'Courier New', monospace;
+  --font-monospace: 'Commit Mono', 'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-interface: 'Commit Mono', 'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-text: 'Commit Mono', 'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+body, input, button, textarea, select {
+  font-family: var(--font-default) !important;
+}
+
+/* Global text size normalization — 16px baseline */
+.theme-dark {
+  --font-text-size: 16px;
+  --font-ui-small: 16px;
+  --font-ui-smaller: 16px;
+  --font-ui-medium: 16px;
+}
+
+body {
+  font-size: 16px !important;
+}
+
+.theme-dark .workspace-leaf-content,
+.theme-dark .markdown-rendered,
+.theme-dark .markdown-source-view,
+.theme-dark .cm-s-obsidian,
+.theme-dark .nav-files-container,
+.theme-dark .search-result-container,
+.theme-dark .backlink-pane,
+.theme-dark .outgoing-link-pane,
+.theme-dark .tag-pane-tag,
+.theme-dark .tree-item-self {
+  font-size: 16px;
+}
+
+
+/* ============================================================
+   HEADINGS — Cyan with glow
+   ============================================================ */
+.theme-dark .markdown-rendered h1,
+.theme-dark .markdown-rendered h2,
+.theme-dark .markdown-rendered h3,
+.theme-dark .markdown-rendered h4,
+.theme-dark .markdown-rendered h5,
+.theme-dark .markdown-rendered h6,
+.theme-dark .cm-header {
+  color: var(--jack-cyan) !important;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.theme-dark .markdown-rendered h1,
+.theme-dark .cm-header-1 {
+  font-size: 1.8em;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  padding-bottom: 8px;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
+
+.theme-dark .markdown-rendered h2,
+.theme-dark .cm-header-2 {
+  font-size: 1.4em;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.08);
+  padding-bottom: 4px;
+}
+
+.theme-dark .markdown-rendered h3,
+.theme-dark .cm-header-3 {
+  font-size: 1.15em;
+}
+
+
+/* ============================================================
+   LINKS — Red with glow on hover
+   ============================================================ */
+.theme-dark a.internal-link,
+.theme-dark .cm-hmd-internal-link {
+  color: var(--jack-red) !important;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--jack-red);
+  transition: all 0.2s ease;
+}
+
+.theme-dark a.internal-link:hover,
+.theme-dark .cm-hmd-internal-link:hover {
+  text-shadow: 0 0 6px var(--jack-red);
+  opacity: 0.9;
+}
+
+.theme-dark a.external-link {
+  color: var(--jack-red) !important;
+  border-bottom: 1px dotted var(--jack-red);
+}
+
+.theme-dark a.external-link:hover {
+  text-shadow: 0 0 6px var(--jack-red);
+}
+
+
+/* ============================================================
+   BOLD & ITALIC — Yellow highlights
+   ============================================================ */
+.theme-dark strong,
+.theme-dark .cm-strong {
+  color: var(--jack-yellow) !important;
+  font-weight: 700;
+}
+
+.theme-dark em,
+.theme-dark .cm-em {
+  color: var(--jack-yellow-dim);
+  font-style: italic;
+}
+
+.theme-dark mark,
+.theme-dark .markdown-rendered mark {
+  background: rgba(255, 255, 0, 0.15);
+  color: var(--jack-yellow);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+
+/* ============================================================
+   CODE BLOCKS — Dark terminal feel
+   ============================================================ */
+.theme-dark code,
+.theme-dark .cm-inline-code {
+  background: rgba(0, 240, 255, 0.06) !important;
+  color: var(--jack-green) !important;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  font-size: 0.9em;
+}
+
+.theme-dark pre,
+.theme-dark .markdown-rendered pre {
+  background: #111111 !important;
+  border: 1px solid #2a2a2a;
+  border-left: 3px solid var(--jack-cyan);
+  border-radius: 4px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.theme-dark pre code,
+.theme-dark .markdown-rendered pre code {
+  background: transparent !important;
+  border: none !important;
+  color: var(--jack-text) !important;
+  padding: 0;
+}
+
+
+/* ============================================================
+   BLOCKQUOTES — Cyan accent bar
+   ============================================================ */
+.theme-dark blockquote,
+.theme-dark .markdown-rendered blockquote {
+  border-left: 3px solid var(--jack-yellow-dim);
+  background: rgba(255, 255, 0, 0.03);
+  padding: 10px 16px;
+  margin: 12px 0;
+  border-radius: 0 4px 4px 0;
+  color: var(--jack-text-muted);
+}
+
+
+/* ============================================================
+   TABLES — Clean dark with cyan headers
+   ============================================================ */
+.theme-dark .markdown-rendered table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.theme-dark .markdown-rendered th {
+  background: rgba(0, 240, 255, 0.08);
+  color: var(--jack-cyan);
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.2);
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.theme-dark .markdown-rendered td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 16px;
+}
+
+.theme-dark .markdown-rendered tr:hover td {
+  background: rgba(0, 240, 255, 0.03);
+}
+
+.theme-dark .markdown-rendered tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+
+/* ============================================================
+   TAGS — Cyan pills
+   ============================================================ */
+.theme-dark .tag,
+.theme-dark a.tag {
+  background: rgba(0, 240, 255, 0.08) !important;
+  color: var(--jack-cyan) !important;
+  border: 1px solid rgba(0, 240, 255, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 2px 10px !important;
+  font-size: 0.8em;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  transition: all 0.2s ease;
+}
+
+.theme-dark .tag:hover,
+.theme-dark a.tag:hover {
+  background: rgba(0, 240, 255, 0.15) !important;
+  text-shadow: 0 0 4px rgba(0, 240, 255, 0.3);
+}
+
+
+/* ============================================================
+   CHECKBOXES — Green glow
+   ============================================================ */
+.theme-dark input[type="checkbox"]:checked {
+  background-color: var(--jack-green) !important;
+  border-color: var(--jack-green) !important;
+  box-shadow: 0 0 6px rgba(45, 190, 40, 0.3);
+}
+
+.theme-dark .task-list-item-checkbox {
+  border-color: var(--jack-text-faint);
+  border-radius: 3px;
+}
+
+
+/* ============================================================
+   HORIZONTAL RULES — Cyan gradient fade
+   ============================================================ */
+.theme-dark hr,
+.theme-dark .markdown-rendered hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--jack-yellow-dim), var(--jack-cyan), var(--jack-yellow-dim), transparent);
+  opacity: 0.3;
+  margin: 24px 0;
+}
+
+
+/* ============================================================
+   HIDE ATTACHMENTS FOLDER FROM FILE EXPLORER
+   ============================================================ */
+.nav-folder-title[data-path="Attachments"],
+.nav-folder-title[data-path="Attachments"] ~ .nav-folder-children,
+.tree-item[data-path^="Attachments"],
+.nav-folder[data-path="Attachments"] {
+  display: none !important;
+}
+
+.nav-folder-title[data-path="Graphs"],
+.nav-folder-title[data-path="Graphs"] ~ .nav-folder-children,
+.tree-item[data-path^="Graphs"],
+.nav-folder[data-path="Graphs"] {
+  display: none !important;
+}
+
+
+/* ============================================================
+   SIDEBAR / FILE EXPLORER
+   ============================================================ */
+.theme-dark .nav-folder-title {
+  color: var(--jack-cyan);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+}
+
+.theme-dark .nav-file-title {
+  color: var(--jack-text-muted);
+  font-size: 16px;
+}
+
+.theme-dark .nav-file-title:hover,
+.theme-dark .nav-folder-title:hover {
+  color: var(--jack-cyan);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.theme-dark .nav-file-title.is-active {
+  color: var(--jack-yellow);
+  background: rgba(255, 255, 0, 0.06);
+}
+
+
+/* ============================================================
+   TABS
+   ============================================================ */
+.theme-dark .workspace-tab-header {
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.theme-dark .workspace-tab-header.is-active {
+  border-bottom-color: var(--jack-yellow);
+  color: var(--jack-yellow);
+}
+
+.theme-dark .workspace-tab-header:hover:not(.is-active) {
+  color: var(--jack-text);
+  border-bottom-color: rgba(0, 240, 255, 0.3);
+}
+
+
+/* ============================================================
+   SCROLLBAR — Subtle cyan
+   ============================================================ */
+.theme-dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.12);
+  border-radius: 4px;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.25);
+}
+
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+.theme-dark .search-result-file-title {
+  color: var(--jack-cyan);
+  font-weight: 600;
+}
+
+.theme-dark .search-result-file-match-highlight {
+  color: var(--jack-yellow);
+  background: rgba(255, 255, 0, 0.12);
+}
+
+
+/* ============================================================
+   GRAPH VIEW — Neon nodes
+   ============================================================ */
+.theme-dark .graph-view.color-fill {
+  color: var(--jack-cyan);
+}
+
+.theme-dark .graph-view.color-fill-highlight {
+  color: var(--jack-yellow);
+}
+
+.theme-dark .graph-view.color-fill-tag {
+  color: var(--jack-red);
+}
+
+.theme-dark .graph-view.color-fill-attachment {
+  color: var(--jack-green);
+}
+
+.theme-dark .graph-view.color-line {
+  color: #33333380;
+}
+
+.theme-dark .graph-view.color-arrow {
+  color: #33333380;
+}
+
+
+/* ============================================================
+   CALLOUTS — Color-coded with glow
+   ============================================================ */
+.theme-dark .callout[data-callout="info"] {
+  --callout-color: 0, 240, 255;
+}
+
+.theme-dark .callout[data-callout="warning"] {
+  --callout-color: 255, 255, 0;
+}
+
+.theme-dark .callout[data-callout="danger"],
+.theme-dark .callout[data-callout="error"] {
+  --callout-color: 255, 0, 60;
+}
+
+.theme-dark .callout[data-callout="success"],
+.theme-dark .callout[data-callout="tip"] {
+  --callout-color: 45, 190, 40;
+}
+
+
+/* ============================================================
+   FRONTMATTER / PROPERTIES
+   ============================================================ */
+.theme-dark .metadata-container {
+  background: rgba(0, 240, 255, 0.03);
+  border: 1px solid rgba(0, 240, 255, 0.08);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+.theme-dark .metadata-property-key {
+  color: var(--jack-yellow-dim);
+  font-weight: 600;
+}
+
+.theme-dark .metadata-property-value {
+  color: var(--jack-text);
+}
+
+
+/* ============================================================
+   SCANLINE OVERLAY — Subtle CRT effect
+   ============================================================ */
+/* Background image — lives alongside the snippet in .obsidian/snippets/ */
+body {
+  /* background-image: url("background.jpg") !important; */
+  /* Place background.jpg in .obsidian/snippets/ to enable */
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Dark overlay on top of background to keep readability */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(25, 25, 25, 0.85);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure all content sits above the overlay */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scanline CRT effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.08) 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.15;
+}
+
+
+/* ============================================================
+   CURSOR GLOW — Subtle pulse on active line
+   ============================================================ */
+.theme-dark .cm-active {
+  background: rgba(0, 240, 255, 0.02) !important;
+}
+
+.theme-dark .cm-activeLine {
+  background: rgba(0, 240, 255, 0.03) !important;
+}
+
+
+/* ============================================================
+   SELECTION — Cyan tint
+   ============================================================ */
+.theme-dark ::selection {
+  background: rgba(0, 240, 255, 0.2);
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   STATUS BAR
+   ============================================================ */
+.theme-dark .status-bar {
+  background: #111111;
+  border-top: 1px solid rgba(255, 255, 0, 0.1);
+  color: var(--jack-text-faint);
+  font-size: 0.8em;
+}
+
+
+/* ============================================================
+   TOOLTIPS
+   ============================================================ */
+.theme-dark .tooltip {
+  background: #111111 !important;
+  border: 1px solid rgba(0, 240, 255, 0.2) !important;
+  color: var(--jack-text) !important;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ============================================================
+   MODALS & PROMPTS
+   ============================================================ */
+.theme-dark .modal {
+  background: var(--jack-bg) !important;
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 240, 255, 0.05);
+  border-radius: 8px;
+}
+
+.theme-dark .modal-title {
+  color: var(--jack-cyan);
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.2);
+}
+
+.theme-dark .suggestion-item.is-selected {
+  background: rgba(255, 255, 0, 0.06);
+  border-left: 2px solid var(--jack-yellow);
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.theme-dark button.mod-cta {
+  background: var(--jack-red) !important;
+  color: white !important;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.theme-dark button.mod-cta:hover {
+  box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   LISTS — Cyan bullets
+   ============================================================ */
+.theme-dark .markdown-rendered ul > li::marker {
+  color: var(--jack-cyan);
+}
+
+.theme-dark .markdown-rendered ol > li::marker {
+  color: var(--jack-yellow-dim);
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   DATAVIEW TABLES — Inherit theme
+   ============================================================ */
+.theme-dark .dataview.table-view-table th {
+  background: rgba(0, 240, 255, 0.08);
+  color: var(--jack-cyan);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85em;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.2);
+}
+
+.theme-dark .dataview.table-view-table td {
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 16px;
+}
+
+.theme-dark .dataview.table-view-table tr:hover td {
+  background: rgba(0, 240, 255, 0.03);
+}
+
+
+/* ============================================================
+   CONTRIBUTION GRAPH — Brand colors
+   ============================================================ */
+.theme-dark .contribution-graph {
+  background: transparent !important;
+}
+
+
+/* ============================================================
+   JUGGL GRAPH — Cybermap neon aesthetic
+   ============================================================ */
+/* Graph container */
+.theme-dark .juggl-container {
+  background: #0a0a0a !important;
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  border-radius: 6px;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.05);
+}
+
+/* Grid overlay for cybermap feel */
+.theme-dark .juggl-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Vignette effect */
+.theme-dark .juggl-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navigator mini-map */
+.theme-dark .juggl-container .cy-navigator {
+  background: rgba(10, 10, 10, 0.9) !important;
+  border: 1px solid rgba(0, 240, 255, 0.2) !important;
+  border-radius: 4px;
+}
+
+
+/* ============================================================
+   DASHBOARD-SPECIFIC — cssclass: dashboard
+   ============================================================ */
+.dashboard .markdown-rendered h1 {
+  font-size: 2.2em;
+  text-align: center;
+  text-shadow: 0 0 16px rgba(0, 240, 255, 0.4), 0 0 40px rgba(0, 240, 255, 0.1);
+  margin-bottom: 4px;
+}
+
+.dashboard .markdown-rendered blockquote {
+  text-align: center;
+  border-left: none;
+  background: transparent;
+  font-style: italic;
+  color: var(--jack-text-faint);
+}
+
+.dashboard .markdown-rendered blockquote:first-of-type {
+  margin-top: -8px;
+}

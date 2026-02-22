@@ -1,0 +1,11 @@
+{
+  "baseFontSize": 16,
+  "theme": "obsidian",
+  "cssTheme": "",
+  "enabledCssSnippets": [
+    "style"
+  ],
+  "interfaceFontFamily": "Commit Mono, Cascadia Code, JetBrains Mono, Fira Code, Consolas, monospace",
+  "textFontFamily": "Commit Mono, Cascadia Code, JetBrains Mono, Fira Code, Consolas, monospace",
+  "monospaceFontFamily": "Commit Mono, Cascadia Code, JetBrains Mono, Fira Code, Consolas, monospace"
+}

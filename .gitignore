@@ -1,0 +1,42 @@
+# Obsidian workspace (changes every session, not useful to version)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Trash
+.trash/
+
+# Credentials & secrets
+*.ovpn
+*.pem
+*.key
+HTB/Configs/
+
+# Session data & tokens
+cookies*.txt
+slack_inbox.json
+slack_outbound.log
+
+# Ephemeral engagement artifacts (not core files)
+Clients/*/scans/
+Clients/*/status.md
+Clients/*/slack_outbound.log
+Clients/*/slack_inbox.json
+HTB/Labs/*/scans/
+HTB/Labs/*/status.md
+HTB/Labs/*/slack_outbound.log
+HTB/Labs/*/slack_inbox.json
+
+# Files that moved to ~/jack/ project root (not in vault)
+cheatsheet.md
+engagements.md
+heartbeat.md
+methodology.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
