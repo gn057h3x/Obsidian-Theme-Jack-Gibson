@@ -2,8 +2,6 @@
 
 Obsidian theme I use to track Hack The Box (HTB) labs. It contains some demo lab data and playbook info.
 
-**Creator:** gn057h3x
-
 ## Screenshots
 
 | | | |
