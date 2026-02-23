@@ -1,6 +1,6 @@
 # Obsidian Theme - Jack Gibson
 
-Obsidian theme I use to track Hack The Box (HTB) labs. It contains some demo lab data and playbook info.
+Hack The Box (HTB) inspired Obsidian theme. Contains demo lab data and playbook info.
 
 ## Screenshots
 
