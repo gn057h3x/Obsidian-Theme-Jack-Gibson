@@ -6,11 +6,11 @@ cssclass: dashboard
 
 | Machine | Difficulty | OS | Status | Completed |
 |---------|-----------|-----|--------|-----------|
-| [[Cap]] | Easy | Linux | Completed | 2026-02-16 |
-| [[Dancing]] | Very Easy | Windows | Completed | 2026-02-16 |
-| [[Fawn]] | Very Easy | Linux | Completed | 2026-02-16 |
-| [[Meow]] | Very Easy | Linux | Completed | 2026-02-16 |
-| [[Redeemer]] | Very Easy | Linux | Completed | 2026-02-16 |
+| [[Beacon]] | Very Easy | Linux | Completed | 2026-01-10 |
+| [[Relay]] | Very Easy | Linux | Completed | 2026-01-10 |
+| [[Mirror]] | Very Easy | Windows | Completed | 2026-01-11 |
+| [[Cipher]] | Very Easy | Linux | Completed | 2026-01-11 |
+| [[Prism]] | Easy | Linux | Completed | 2026-01-12 |
 
 ---
 
@@ -22,9 +22,9 @@ cssclass: dashboard
 
 | Entry | Category | Added |
 |-------|----------|-------|
-| [[smb-null-session-enumeration]] | Playbook/techniques | 2026-02-16 |
-| [[redis-noauth-data-extraction]] | Playbook/techniques | 2026-02-16 |
-| [[linux-capabilities-setuid-privesc]] | Playbook/techniques | 2026-02-16 |
-| [[idor-sequential-id-pcap-creds]] | Playbook/techniques | 2026-02-16 |
+| [[default-credentials-management-interfaces]] | Playbook/techniques | 2026-01-10 |
+| [[weak-share-permissions-enumeration]] | Playbook/techniques | 2026-01-11 |
+| [[exposed-database-service-extraction]] | Playbook/techniques | 2026-01-11 |
+| [[suid-binary-privilege-escalation]] | Playbook/techniques | 2026-01-12 |
 
 ---

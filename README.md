@@ -19,7 +19,7 @@ Hack The Box (HTB) inspired Obsidian theme. Contains demo lab data and playbook 
 ## Structure
 
 ```
-HTB/Labs/          - Machine walkthroughs (5 retired demos)
+HTB/Labs/          - Machine notes (5 fictional demos)
 Playbook/          - Techniques and knowledge base
 Dashboard.md       - Main dashboard view
 ```

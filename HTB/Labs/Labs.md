@@ -11,8 +11,8 @@ Machines, challenges, and lab notes from the main HTB platform.
 
 | Machine | Difficulty | OS | Status | Notes |
 |---------|------------|-----|--------|-------|
-| [[Meow/Meow\|Meow]] | Very Easy | Linux | Completed | Telnet, root blank password |
-| [[Fawn/Fawn\|Fawn]] | Very Easy | Linux | Completed | FTP, anonymous access |
-| [[Dancing/Dancing\|Dancing]] | Very Easy | Windows | Completed | SMB, null session |
-| [[Redeemer/Redeemer\|Redeemer]] | Very Easy | Linux | Completed | Redis, no auth |
-| [[Cap/Cap\|Cap]] | Easy | Linux | Completed | IDOR, PCAP creds, cap_setuid privesc |
+| [[Beacon/Beacon\|Beacon]] | Very Easy | Linux | Completed | Default creds, admin panel |
+| [[Relay/Relay\|Relay]] | Very Easy | Linux | Completed | Anonymous file access, cron privesc |
+| [[Mirror/Mirror\|Mirror]] | Very Easy | Windows | Completed | Weak share permissions |
+| [[Cipher/Cipher\|Cipher]] | Very Easy | Linux | Completed | Exposed database, no auth |
+| [[Prism/Prism\|Prism]] | Easy | Linux | Completed | Web injection, SUID privesc |

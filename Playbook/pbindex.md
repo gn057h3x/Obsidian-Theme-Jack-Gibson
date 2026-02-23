@@ -24,12 +24,12 @@ When you see this during enumeration, check the linked playbook entry first.
 
 | Signal | What To Check | Playbook Entry |
 |--------|--------------|----------------|
-| Port 6379 open | Redis no-auth → data dump, RCE via CONFIG SET | [[redis-noauth-data-extraction]] |
-| Port 445 + null session | SMB share enum → sensitive files, user lists | [[smb-null-session-enumeration]] |
-| Sequential numeric IDs in URLs | IDOR → access other users' data/files | [[idor-sequential-id-pcap-creds]] |
-| `getcap` shows `cap_setuid` | Instant root via interpreted language | [[linux-capabilities-setuid-privesc]] |
-| SMB signing not required | Relay attack potential (ntlmrelayx) | [[smb-null-session-enumeration]] |
-| FTP/Telnet/HTTP Basic in PCAP | Cleartext credential extraction | [[idor-sequential-id-pcap-creds]] |
+| Login page on admin/management interface | Default credentials → instant access | [[default-credentials-management-interfaces]] |
+| Port 445 + guest/anonymous access | Share enumeration → sensitive files, credentials | [[weak-share-permissions-enumeration]] |
+| Database port open (3306, 5432, 6379, 27017) | No-auth access → data extraction, credential harvesting | [[exposed-database-service-extraction]] |
+| Custom SUID binary (non-standard) | GTFOBins or PATH manipulation → root | [[suid-binary-privilege-escalation]] |
+| SMB signing not required | Relay attack potential | [[weak-share-permissions-enumeration]] |
+| Database with user tables | Credential extraction → offline cracking → reuse | [[exposed-database-service-extraction]] |
 
 ---
 
@@ -44,7 +44,7 @@ When you see this during enumeration, check the linked playbook entry first.
 | Failures | 0 |
 | **Total Entries** | **4** |
 
-*Last updated: 2026-02-21*
+*Last updated: 2026-01-12*
 
 ---
 
@@ -52,9 +52,10 @@ When you see this during enumeration, check the linked playbook entry first.
 
 | Source | Entries From | Type |
 |--------|-------------|------|
-| HTB Dancing (Starting Point, Very Easy/Windows) | 1 (SMB null session) | Lab |
-| HTB Redeemer (Starting Point, Very Easy/Linux) | 1 (Redis no-auth) | Lab |
-| HTB Cap (Easy/Linux) | 2 (IDOR/PCAP, cap_setuid) | Lab |
+| HTB Beacon (Very Easy/Linux) | 1 (default credentials) | Lab |
+| HTB Mirror (Very Easy/Windows) | 1 (weak share permissions) | Lab |
+| HTB Cipher (Very Easy/Linux) | 1 (exposed database) | Lab |
+| HTB Prism (Easy/Linux) | 1 (SUID privesc) | Lab |
 
 ---
 
@@ -70,7 +71,7 @@ Vulnerability classes that typically pay well on bug bounty platforms. Prioritiz
 | File upload with insufficient validation | RCE via webshell | Server compromise, highest impact class | Critical |
 | Password reset with predictable tokens | Account takeover | Affects all users, no interaction required | High–Critical |
 | Race condition on transaction endpoints | Business logic abuse | Financial impact, hard to detect/fix | High |
-| SSRF on URL-accepting features | Internal service access | Cloud metadata exposure (AWS keys), internal network pivot | High–Critical |
+| SSRF on URL-accepting features | Internal service access | Cloud metadata exposure, internal network pivot | High–Critical |
 | OAuth redirect_uri with open redirect | Token theft | Account takeover via social engineering | High |
 | Admin panel accessible without auth | Privilege escalation | Full application compromise | Critical |
 | API returning more data than UI shows | Excessive data exposure | PII leakage at scale, GDPR implications | Medium–High |
